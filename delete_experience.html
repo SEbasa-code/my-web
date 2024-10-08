@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Experience Entry</title>
+    <script>
+        function deleteExperience() {
+            // Get the value of the ID input field
+            var experienceId = document.getElementById("experienceId").value;
+
+            // Check if the ID is provided
+            if (!experienceId) {
+                alert("Please enter an Experience ID.");
+                return;
+            }
+
+            // Create an XMLHttpRequest (AJAX) to send the data to the Flask server
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost:5000/delete_experience", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // Set up the onreadystatechange function to handle the response from the Flask server
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {  // When the request is complete
+                    var response = JSON.parse(xhr.responseText);
+
+                    // Handle success or error response
+                    if (xhr.status === 200) {
+                        alert("Experience entry deleted successfully!");
+                    } else {
+                        alert("Error: " + response.message);
+                    }
+                }
+            };
+
+            // Send the ID as JSON data
+            var data = JSON.stringify({ "id": experienceId });
+            xhr.send(data);
+        }
+    </script>
+</head>
+<body>
+    <h1>Delete Experience Entry</h1>
+
+    <form id="deleteForm">
+        <label for="experienceId">Experience ID:</label>
+        <input type="text" id="experienceId" placeholder="Enter Experience ID" required><br><br>
+        <button type="button" onclick="deleteExperience()">Delete Experience</button>
+    </form>
+
+</body>
+</html>
+

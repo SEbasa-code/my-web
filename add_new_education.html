@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Form</title>
+    <script>
+        // Function to submit form data using fetch API
+        async function submitForm() {
+            const startYear = document.getElementById('startYear').value;
+            const endYear = document.getElementById('endYear').value;
+            const degree = document.getElementById('degree').value;
+            const description = document.getElementById('description').value;
+
+            const data = {
+                startYear: startYear,
+                endYear: endYear,
+                degree: degree,
+                description: description
+            };
+
+            try {
+                const response = await fetch('http://localhost:8080/education', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert('Education added successfully! ID: ' + result.id);
+                } else {
+                    alert('Failed to add education: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Add Education</h1>
+    <form onsubmit="event.preventDefault(); submitForm();">
+        <label for="startYear">Start Year:</label>
+        <input type="text" id="startYear" required><br><br>
+
+        <label for="endYear">End Year:</label>
+        <input type="text" id="endYear" required><br><br>
+
+        <label for="degree">Degree:</label>
+        <input type="text" id="degree" required><br><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" required></textarea><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+

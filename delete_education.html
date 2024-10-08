@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Education Entry</title>
+    <script>
+        function deleteEducation() {
+            // Get the value of the ID input field
+            var educationId = document.getElementById("educationId").value;
+
+            // Check if the ID is provided
+            if (!educationId) {
+                alert("Please enter an Education ID.");
+                return;
+            }
+
+            // Create an XMLHttpRequest (AJAX) to send the data to the Flask server
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost:5000/delete_education", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // Set up the onreadystatechange function to handle the response from the Flask server
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {  // When the request is complete
+                    var response = JSON.parse(xhr.responseText);
+
+                    // Handle success or error response
+                    if (xhr.status === 200) {
+                        alert("Education entry deleted successfully!");
+                    } else {
+                        alert("Error: " + response.message);
+                    }
+                }
+            };
+
+            // Send the ID as JSON data
+            var data = JSON.stringify({ "id": educationId });
+            xhr.send(data);
+        }
+    </script>
+</head>
+<body>
+    <h1>Delete Education Entry</h1>
+
+    <form id="deleteForm">
+        <label for="educationId">Education ID:</label>
+        <input type="text" id="educationId" placeholder="Enter Education ID" required><br><br>
+        <button type="button" onclick="deleteEducation()">Delete Education</button>
+    </form>
+
+</body>
+</html>

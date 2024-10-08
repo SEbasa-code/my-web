@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Corrected "viewpoint" -->
+    <title>CV Project</title>
+    <link rel="stylesheet" href="cv.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Sebastian.</a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="personalinfo.html">Personal Info</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="home">
+        <div class="home-content">
+            <h1>Hi, I'm Sebasa Mokwele</h1>
+            <h3>University student</h3>
+            <p>Hello everyone! My name is Sebasa Mokwele. I’m currently studying BSC Mathematical Sciences at University of Limpopo. I have a passion for TECHNOLOGY and I’m eager to deepen my knowledge and skills in this area.</p>
+            <div class="btn-box">
+                <a href="#">Hire me</a>
+                <a href="#">Let's talk</a>
+            </div>
+        </div>
+        <div class="home-sci">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-whatsapp'></i></a>
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+        </div>
+        <span class="home-imghover"></span>
+    </section>
+
+    <!-- JavaScript to handle interaction with the server-side API -->
+    <script>
+        // Example of how to interact with the backend API using Fetch API in JS
+
+        // Example fetch function to get personal info (replace with your actual API endpoint)
+        const getPersonalInfo = async () => {
+            try {
+                const response = await fetch('https://your-backend-api-url.com/personalinfo');
+                const data = await response.json();
+                console.log(data); // Display the fetched data
+            } catch (error) {
+                console.error('Error fetching personal info:', error);
+            }
+        };
+
+        // Call the function to load personal info
+        getPersonalInfo();
+
+        // Toggle navigation for mobile view
+        const toggleButton = document.querySelector('.toggle');
+        const navbar = document.querySelector('.navbar');
+
+        toggleButton.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

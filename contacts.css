@@ -1,0 +1,128 @@
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url(sevv.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Header styles */
+.header {
+    background-color: #333;
+    color: white;
+    
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+}
+
+.navbar a.active {
+    background-color: #00abf0; /* Active link color */
+}
+
+/* Center the title and form */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full height of the viewport */
+}
+
+.col {
+    text-align: center; /* Center-align text */
+    max-width: 600px; /* Limit width for better readability */
+    width: 100%; /* Full width for smaller screens */
+}
+
+h2 {
+    margin-bottom: 20px; /* Space below the heading */
+    color :#00abf0; /* Make the heading text white */
+}
+
+/* Form styles */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #444; /* Darker background for the form */
+    color: white; /* Ensure form text is white */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white; /* Make label text white */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #555; /* Dark background for input fields */
+    color: white; /* White text for input fields */
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #ccc; /* Light gray for placeholder text */
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar a {
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+    }
+}
+

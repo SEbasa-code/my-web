@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: url(sevv.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.container{
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header{
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+}
+.container .form{
+    margin-top: 30px;
+}
+.form .input-box{
+    width: 100%;
+    margin-top: 20px;
+}
+.input-box label{
+    color: #ffffff;
+
+}
+.form .input-box input{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+.head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.navbar a{
+    font-size: 18px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: .3s;
+}
+.navbar a:hover,
+.navbar a.active{
+    color: #00abf0;
+}
+.logo{
+    position: relative;
+    font-size: 25px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 600;
+}
+.logo::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    
+   
+}
+.form .column{
+    display: flex;
+    column-gap: 15px;
+
+}
+.form .gender-box{
+    margin-top: 20px;
+}
+.gender-box h3{
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap; 
+}
+.form .gender{
+    column-gap: 5px;
+    color: white;
+   
+}
+.form :where(.gender input, .gender label) {
+    cursor: pointer;
+}
+/* responsive*/
+@media screen and (max-width:500px) {
+    .form .column{
+       flex-wrap: wrap;
+    }
+    .form :where(.gender-option, .gender){
+        row-gap: 1rem;
+    } 
+}
+.home-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; 
+    height: 40px; 
+    background: transparent;
+    border: 2px solid #00abf0;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #00abf0; 
+    transition: color 0.3s, background 0.3s; 
+}
+
+.home-sci a:hover {
+    color: #081b29; 
+    background: #00abf0; 
+}
+
+
+.home-sci a:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+.toggle {
+    display: none; 
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #ededed;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .toggle {
+        display: block;
+    }
+    
+    .navbar ul {
+        display: none; 
+        flex-direction: column; 
+        gap: 10px;
+        width: 100%; 
+    }
+
+    .navbar.active ul {
+        display: flex; 
+    }
+}

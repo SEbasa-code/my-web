@@ -1,0 +1,247 @@
+/* Add this to the top of your CSS file */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #ededed;
+  background-color: #f9f9f9;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10%;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 25px;
+  color: #ededed;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  font-size: 18px;
+  color: #ededed;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 35px;
+  transition: 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #00abf0;
+}
+
+.home {
+  height: 100vh;
+  background: url(sevv.jpg) no-repeat center center/cover; /* Shortened for clarity */
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+}
+
+.home-content {
+  max-width: 600px;
+  text-align: center;
+}
+
+.home-content h1 {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.home-content h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #00abf0;
+  margin-bottom: 20px;
+}
+
+.home-content p {
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.btn-box {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 345px;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.btn-box a {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 100%;
+  background: #00abf0;
+  border: 2px solid #00abf0;
+  border-radius: 8px;
+  font-size: 19px;
+  color: #081b29;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  z-index: 1;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.home-sci {
+  position: absolute;
+  bottom: 40px;
+  width: 170px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-imghover {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  width: 500px;
+  height: 100%;
+  background: transparent;
+  transition: 0.3s;
+}
+
+.home-imghover:hover {
+  background: transparent;
+  opacity: 0.8;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 1200px) {
+  .header {
+      padding: 15px 5%;
+  }
+  .home {
+      padding: 0 5%;
+  }
+  .home-content {
+      max-width: 500px;
+  }
+  .home-content h1 {
+      font-size: 48px;
+  }
+  .home-content h3 {
+      font-size: 28px;
+  }
+  .home-content p {
+      font-size: 14px;
+  }
+  .btn-box {
+      width: 300px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+      padding: 10px 5%;
+  }
+  .home-content h1 {
+      font-size: 36px;
+  }
+  .home-content h3 {
+      font-size: 24px;
+  }
+  .home-content p {
+      font-size: 12px;
+  }
+  .btn-box {
+      flex-direction: column;
+      width: 100%;
+  }
+}
+.header {
+  background-color: #081b29; /* Dark background for the header */
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Space between items */
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #ededed; /* Text color */
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #00abf0; /* Color change on hover */
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+  .navbar ul {
+      flex-direction: column; /* Stack items vertically */
+      gap: 10px;
+  }
+  
+  .header {
+      padding: 10px 5%; /* Adjust header padding for smaller screens */
+  }
+}
+.home-sci a {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Set width */
+  height: 40px; /* Set height */
+  background: transparent;
+  border: 2px solid #00abf0; /* Border color */
+  border-radius: 50%;
+  font-size: 20px;
+  color: #00abf0; /* Icon color */
+  transition: color 0.3s, background 0.3s; /* Smooth transition */
+}
+
+.home-sci a:hover {
+  color: #081b29; /* Change icon color on hover */
+  background: #00abf0; /* Background color on hover */
+}
+
+/* Optional: Add a scale effect */
+.home-sci a:hover i {
+  transform: scale(1.1); /* Slightly increase size */
+  transition: transform 0.3s; /* Smooth scaling */
+}
+

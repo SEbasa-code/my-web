@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Project</title>
+    <link rel="stylesheet" href="education.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Sebastian.</a>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="personalinfo.html">Personal Info</a>
+            <a href="education.html">Education</a>
+            <a href="#" class="active">Experience</a>
+            <a href="skills.html">Skills</a>
+            <a href="contacts.html">Contact</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <main class="row">
+            <section class="col">
+                <header class="title">
+                    <h2>EXPERIENCE</h2>
+                </header>
+                <div id="experience-list">
+                    <!-- Existing experience entries will be loaded here -->
+                </div>
+                <div class="box" id="new-experience" style="display: none;">
+                    <h4 contenteditable="true" placeholder="Year"></h4>
+                    <h3 contenteditable="true" placeholder="Title"></h3>
+                    <p contenteditable="true" placeholder="Description"></p>
+                    <button id="save-new">Save</button>
+                </div>
+                <button id="add-new">Add New Experience</button>
+            </section>
+        </main>
+    </div>
+
+    <script>
+    // Show the new experience form
+    document.getElementById('add-new').addEventListener('click', () => {
+        document.getElementById('new-experience').style.display = 'block';
+    });
+
+    // Save new experience
+    document.getElementById('save-new').addEventListener('click', () => {
+        const newExperience = document.getElementById('new-experience');
+        const year = newExperience.children[0].innerText;
+        const title = newExperience.children[1].innerText;
+        const description = newExperience.children[2].innerText;
+
+        // Send data to the Flask backend
+        fetch('/add_new_experience', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ year, title, description })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const newBox = document.createElement('div');
+                newBox.className = 'box';
+                newBox.setAttribute('data-id', data.id);
+                newBox.innerHTML = `
+                    <h4 contenteditable='true'>${year}</h4>
+                    <h3 contenteditable='true'>${title}</h3>
+                    <p contenteditable='true'>${description}</p>
+                    <button class='delete'>Delete</button>
+                `;
+                document.querySelector('section.col').insertBefore(newBox, newExperience);
+                newExperience.children[0].innerText = '';
+                newExperience.children[1].innerText = '';
+                newExperience.children[2].innerText = '';
+            } else {
+                console.error('Error adding new experience entry:', data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+
+        newExperience.style.display = 'none'; // Hide after saving
+    });
+
+    // Handle delete action
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('delete')) {
+            const box = event.target.parentElement;
+            const id = box.getAttribute('data-id');
+            fetch('/delete_experience', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    box.remove();
+                } else {
+                    console.error('Error deleting experience entry:', data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    });
+    </script>
+</body>
+</html>
